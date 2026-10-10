@@ -1,7 +1,7 @@
 import type { ComponentPropsWithoutRef } from 'react'
 import { cx } from '../../lib/cx'
 
-type ButtonVariant = 'pink' | 'cyan' | 'primary'
+type ButtonVariant = 'primary' | 'accent'
 type ButtonSize = 'md' | 'lg'
 
 interface ButtonLinkProps extends ComponentPropsWithoutRef<'a'> {
@@ -11,19 +11,20 @@ interface ButtonLinkProps extends ComponentPropsWithoutRef<'a'> {
 }
 
 const variantClasses: Record<ButtonVariant, string> = {
-  pink: 'bg-pink',
-  cyan: 'bg-cyan',
-  primary: 'bg-primary',
+  /** Azul-marinho com texto branco. */
+  primary: 'bg-navy text-white hover:bg-navy-soft',
+  /** Laranja com texto azul-marinho (texto branco sobre laranja não atinge o contraste mínimo). */
+  accent: 'bg-orange text-navy hover:bg-orange-bright',
 }
 
 const sizeClasses: Record<ButtonSize, string> = {
-  md: 'h-[50px] px-[30px] text-base tracking-[0.5px]',
-  lg: 'h-[58px] px-10 text-lg',
+  md: 'min-h-12 px-6 text-[15px]',
+  lg: 'min-h-14 px-8 text-base',
 }
 
-/** Botão do tema: cantos de 6px e sombra interna inferior que simula relevo. */
+/** Link com aparência de botão, em formato de pílula. */
 export function ButtonLink({
-  variant = 'cyan',
+  variant = 'primary',
   size = 'lg',
   className,
   ...props
@@ -31,9 +32,8 @@ export function ButtonLink({
   return (
     <a
       className={cx(
-        'inline-flex items-center justify-center rounded-md font-heading font-bold text-white shadow-pressed',
-        'transition-[translate,filter] duration-250 ease-in-out hover:-translate-y-0.5 hover:brightness-105',
-        'motion-reduce:transition-none motion-reduce:hover:translate-y-0',
+        'inline-flex items-center justify-center gap-2 rounded-full font-heading font-medium',
+        'transition-colors duration-200 motion-reduce:transition-none',
         variantClasses[variant],
         sizeClasses[size],
         className,

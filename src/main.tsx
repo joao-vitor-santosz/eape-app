@@ -1,5 +1,5 @@
-import '@fontsource-variable/baloo-2'
-import '@fontsource-variable/mulish'
+import '@fontsource-variable/atkinson-hyperlegible-next'
+import '@fontsource-variable/lexend'
 import './index.css'
 
 import { QueryClientProvider } from '@tanstack/react-query'

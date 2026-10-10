@@ -1,72 +1,59 @@
 @import 'tailwindcss';
 
 /*
- * Tokens de design extraídos do tema de referência Parezy
- * (theme.css, style.css e color-customize.css originais + captura da página inicial).
+ * Identidade visual da EAPE.
+ * As cores principais foram medidas nas logos oficiais da clínica.
  */
 @theme {
-  --font-sans: 'Mulish Variable', Mulish, Arial, Helvetica, sans-serif;
-  --font-heading: 'Baloo 2 Variable', 'Baloo 2', sans-serif;
+  --font-sans: 'Atkinson Hyperlegible Next Variable', 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+  --font-heading: 'Lexend Variable', Lexend, system-ui, sans-serif;
 
-  --color-navy: #323663;
-  --color-primary: #4559b3;
-  --color-primary-dark: #364a93;
-  --color-pink: #fc6c93;
-  --color-cyan: #46c9f3;
-  --color-yellow: #fcd380;
-  /* Variação escura do amarelo para ícones sobre fundo claro (contraste). */
-  --color-yellow-dark: #c98a00;
-  --color-cream: #fdf5f2;
-  --color-light: #f8f8f8;
-  --color-body: #666666;
-  --color-line: #edeaea;
+  /* Cores da marca */
+  --color-navy: #04173f;
+  --color-navy-soft: #13285a;
+  --color-orange: #ff7300;
+  --color-teal: #12b3bb;
+  /* Laranja um pouco mais claro, para o estado de hover dos botões laranja. */
+  --color-orange-bright: #ff8a2b;
 
-  --container-site: 1140px;
-  --container-wide: 1520px;
+  /* Cores dos lápis das logos: usadas em ícones, detalhes e fundos. */
+  --color-yellow: #f9c80e;
+  --color-green: #2ea44f;
+  --color-blue: #1d4fb8;
+  --color-purple: #7a3fb5;
+  --color-pink: #ec4d93;
+  --color-red: #e1251b;
 
-  --shadow-pressed: inset 0 -4px 0 0 rgb(0 0 0 / 0.1);
-  --shadow-sticky: 0 0 10px rgb(0 0 0 / 0.1);
-  --shadow-card: 0 6px 30px 0 rgb(0 0 0 / 0.06);
+  /* Variações escuras para uso em texto e ícones sobre fundo claro (contraste AA). */
+  --color-orange-ink: #b84a00;
+  --color-teal-ink: #0b7480;
+  --color-yellow-ink: #8a6100;
+  --color-green-ink: #1e7a38;
+  --color-blue-ink: #1d4fb8;
+  --color-purple-ink: #7a3fb5;
+  --color-pink-ink: #b8246a;
 
-  --animate-flykite: flykite 5s ease-out infinite alternate;
-  --animate-zoominout: zoominout 5s ease-in-out infinite alternate;
-  --animate-spin-slow: mymove 50s linear infinite;
-  --animate-slide-down: slide-down 0.35s ease-out;
+  /* Azul e roxo dos lápis não têm contraste sobre o azul-marinho: versões claras para fundo escuro. */
+  --color-blue-light: #7aa2ff;
+  --color-purple-light: #c39af0;
 
-  @keyframes flykite {
-    0%,
-    100% {
-      transform: translate(20px, -10px);
-    }
-    50% {
-      transform: translate(0, 0);
-    }
-  }
+  /* Tons suaves para fundos de cartões e seções. */
+  --color-orange-soft: #fff0e3;
+  --color-teal-soft: #e0f6f7;
+  --color-yellow-soft: #fef6d6;
+  --color-green-soft: #e3f5e8;
+  --color-blue-soft: #e5ecfa;
+  --color-purple-soft: #f0e8f8;
+  --color-pink-soft: #fde7f0;
 
-  @keyframes zoominout {
-    0%,
-    100% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(0.8);
-    }
-  }
+  /* Neutros, em sintonia com os tons de cimento e madeira do espaço físico */
+  --color-ink: #3b4256;
+  --color-paper: #f6f4f0;
+  --color-line: #e4e0d8;
 
-  @keyframes mymove {
-    50% {
-      transform: rotate(180deg);
-    }
-  }
+  --container-site: 1200px;
 
-  @keyframes slide-down {
-    from {
-      transform: translateY(-100%);
-    }
-    to {
-      transform: translateY(0);
-    }
-  }
+  --shadow-soft: 0 1px 2px rgb(4 23 63 / 0.04), 0 12px 32px -16px rgb(4 23 63 / 0.18);
 }
 
 @layer base {
@@ -81,8 +68,7 @@
   }
 
   body {
-    @apply bg-white font-sans text-base/6 text-body antialiased;
-    overflow-x: hidden;
+    @apply bg-white font-sans text-base/7 text-ink antialiased;
   }
 
   h1,
@@ -91,15 +77,20 @@
   h4,
   h5,
   h6 {
-    @apply font-heading font-extrabold text-navy;
+    @apply font-heading font-semibold tracking-tight text-balance text-navy;
   }
 
   :focus-visible {
-    @apply outline-2 outline-offset-2 outline-navy;
+    @apply outline-3 outline-offset-2 outline-navy;
   }
 
-  /* Seções com fundo azul: o indicador de foco passa a ser branco para manter o contraste. */
+  /* Áreas com fundo azul-marinho: o foco passa a ser laranja para manter o contraste. */
   .on-dark :focus-visible {
-    @apply outline-white;
+    @apply outline-orange;
   }
+}
+
+/* Recorte circular das logos em JPEG: 49% fica dentro do anel branco, sem a borda preta do arquivo. */
+@utility clip-circle {
+  clip-path: circle(49%);
 }

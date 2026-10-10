@@ -10,9 +10,9 @@ interface RevealProps {
 }
 
 /**
- * Animação de entrada ao rolar (fade + deslocamento vertical), como as
- * entradas do Elementor usadas no tema. Com `prefers-reduced-motion`
- * o conteúdo aparece imediatamente.
+ * Entrada suave (opacidade + 8px de deslocamento) ao rolar até o bloco.
+ * Usar com moderação e apenas abaixo da primeira dobra — nunca no hero.
+ * Com `prefers-reduced-motion`, o conteúdo aparece imediatamente.
  */
 export function Reveal({ children, delay = 0, className }: RevealProps) {
   const [ref, inView] = useInView<HTMLDivElement>()
@@ -22,8 +22,8 @@ export function Reveal({ children, delay = 0, className }: RevealProps) {
       ref={ref}
       style={delay ? { transitionDelay: `${delay}ms` } : undefined}
       className={cx(
-        'transition-[opacity,translate] duration-900 ease-out motion-reduce:transition-none',
-        !inView && 'motion-safe:translate-y-10 motion-safe:opacity-0',
+        'transition-[opacity,translate] duration-500 ease-out motion-reduce:transition-none',
+        !inView && 'motion-safe:translate-y-2 motion-safe:opacity-0',
         className,
       )}
     >

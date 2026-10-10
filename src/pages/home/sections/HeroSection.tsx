@@ -1,63 +1,82 @@
-import heroImage from '../../../assets/images/consultorio-1.jpeg'
-import {
-  BlocksDoodle,
-  CloudShape,
-  StarsDoodle,
-  SunDoodle,
-} from '../../../components/decorations/Doodles'
-import { Wave } from '../../../components/decorations/Wave'
+import { Star } from 'lucide-react'
+import heroImage from '../../../assets/images/consultorio-2.jpeg'
+import { Arcs } from '../../../components/decorations/Arcs'
+import { DotGrid } from '../../../components/decorations/DotGrid'
+import { PencilTips } from '../../../components/decorations/PencilTips'
 import { ButtonLink } from '../../../components/ui/Button'
 import { Container } from '../../../components/ui/Container'
-import { Reveal } from '../../../components/ui/Reveal'
-import { siteInfo } from '../../../content/site'
 import { heroContent } from '../../../content/home'
+
+/** Sublinhado ondulado, como um traço de lápis. Decorativo. */
+function Squiggle({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 200 12" preserveAspectRatio="none" fill="none" aria-hidden="true" className={className}>
+      <path
+        d="M3 8c16-8 24 0 40 0s24-8 40 0 24 0 40 0 24-8 40 0 18-4 34-2"
+        stroke="currentColor"
+        strokeWidth="4"
+        strokeLinecap="round"
+        vectorEffect="non-scaling-stroke"
+      />
+    </svg>
+  )
+}
 
 export function HeroSection() {
   return (
-    <section aria-labelledby="hero-titulo" className="relative overflow-hidden bg-cream">
-      <SunDoodle className="pointer-events-none absolute top-0 -left-1 hidden w-[105px] text-navy motion-safe:animate-spin-slow lg:block" />
-      <BlocksDoodle className="pointer-events-none absolute top-2 right-[10%] z-20 hidden w-[100px] text-pink motion-safe:animate-flykite lg:block" />
-      <CloudShape className="pointer-events-none absolute bottom-[2%] left-[29%] z-20 hidden w-[340px] text-white motion-safe:animate-flykite lg:block" />
+    <section aria-labelledby="hero-titulo" className="relative overflow-hidden bg-yellow-soft">
+      {/* Estrelas soltas, como as da logo. */}
+      <Star className="pointer-events-none absolute top-10 left-[46%] hidden size-5 rotate-12 fill-pink text-pink lg:block" aria-hidden="true" />
+      <Star className="pointer-events-none absolute bottom-28 left-[4%] hidden size-4 -rotate-12 fill-purple text-purple sm:block" aria-hidden="true" />
+      <Star className="pointer-events-none absolute top-24 right-[3%] size-4 fill-teal text-teal" aria-hidden="true" />
 
-      <Container size="wide" className="relative">
-        <div className="grid items-center gap-12 pt-14 pb-[min(30vw,180px)] lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-10 lg:pt-20 lg:pb-14">
-          <div className="relative z-10 max-w-[820px]">
-            <Reveal>
-              <h1
-                id="hero-titulo"
-                className="text-[40px]/[1.15] sm:text-[52px]/[1.15] xl:text-[56px]/[1.15] 2xl:text-[66px]/[1.2]"
-              >
-                {siteInfo.fullName}
-              </h1>
-            </Reveal>
-            <Reveal delay={150}>
-              <p className="mt-7 max-w-[480px] text-base/[30px]">{heroContent.intro}</p>
-            </Reveal>
-            <Reveal delay={300}>
-              <ButtonLink href="/#sobre" variant="cyan" className="mt-10 lg:mt-24">
-                Conheça a EAPE
+      <Container>
+        <div className="grid items-center gap-16 pt-12 pb-16 lg:grid-cols-[1fr_1.05fr] lg:gap-16 lg:pt-20 lg:pb-24">
+          <div>
+            <p className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-1.5 font-heading text-sm font-medium text-navy shadow-soft">
+              <Star className="size-4 fill-orange text-orange" aria-hidden="true" />
+              Para crianças e adolescentes
+            </p>
+
+            <h1 id="hero-titulo" className="mt-6 text-4xl/tight sm:text-5xl/tight">
+              Espaço de Atendimento{' '}
+              <span className="text-orange-ink">
+                Pedagógico{' '}
+                <span className="relative inline-block">
+                  Especializado
+                  <Squiggle className="absolute inset-x-0 -bottom-2 h-3 w-full text-teal" />
+                </span>
+              </span>
+            </h1>
+
+            <p className="mt-8 max-w-xl text-lg/8">{heroContent.intro}</p>
+
+            <div className="mt-9 flex flex-wrap gap-3">
+              <ButtonLink href="/#especialidades">Conheça as especialidades</ButtonLink>
+              <ButtonLink href="/#sobre" variant="accent">
+                Quem atendemos
               </ButtonLink>
-            </Reveal>
-            <StarsDoodle className="pointer-events-none absolute right-[-40px] bottom-[110px] hidden w-[80px] text-yellow motion-safe:animate-zoominout xl:block" />
+            </div>
           </div>
 
-          <Reveal delay={200} className="relative z-10 justify-self-center lg:justify-self-end">
+          {/* Margens para que os elementos decorativos tenham espaço ao redor da foto. */}
+          <div className="relative mx-3 sm:mx-10 lg:mx-4">
+            <div aria-hidden="true" className="absolute inset-0 translate-x-3 translate-y-4 rotate-3 rounded-[2rem] bg-teal" />
+            <Arcs className="absolute -top-12 -right-12 size-44 sm:-top-16 sm:-right-16 sm:size-60" />
+            <DotGrid className="absolute -bottom-10 -left-4 w-24 text-pink sm:-left-10 sm:w-28" />
             <img
               src={heroImage}
-              alt="Consultório da EAPE com estante de brinquedos, jogos e livros infantis"
-              width={675}
-              height={675}
+              alt="Sala de atendimento da EAPE com mesa redonda, cadeiras infantis amarelas, livros e brinquedos"
+              width={1599}
+              height={899}
               fetchPriority="high"
-              className="aspect-square w-[min(86vw,420px)] rounded-full object-cover object-[4%_50%] lg:w-[480px] xl:w-[600px] 2xl:w-[675px]"
+              className="relative aspect-4/3 w-full -rotate-2 rounded-[2rem] border-8 border-white object-cover object-[62%_50%] shadow-soft"
             />
-          </Reveal>
+          </div>
         </div>
       </Container>
 
-      <Wave
-        variant="heroBottom"
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-[120px] text-primary sm:h-[200px] lg:h-[340px]"
-      />
+      <PencilTips />
     </section>
   )
 }

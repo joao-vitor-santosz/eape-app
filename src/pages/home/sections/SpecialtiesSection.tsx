@@ -1,4 +1,4 @@
-import { ButtonLink } from '../../../components/ui/Button'
+import { DotGrid } from '../../../components/decorations/DotGrid'
 import { Container } from '../../../components/ui/Container'
 import { Reveal } from '../../../components/ui/Reveal'
 import { SectionHeading } from '../../../components/ui/SectionHeading'
@@ -12,59 +12,46 @@ export function SpecialtiesSection() {
     <section
       id="especialidades"
       aria-labelledby="especialidades-titulo"
-      className="scroll-mt-24 pt-10 pb-20 lg:pt-14 lg:pb-28"
+      className="relative scroll-mt-24 overflow-hidden py-16 lg:py-24"
     >
-      <Container>
-        <div className="grid items-center gap-14 lg:grid-cols-[minmax(0,520px)_minmax(0,1fr)] lg:gap-10">
-          <div>
-            <Reveal>
-              <SectionHeading
-                id="especialidades-titulo"
-                eyebrow="Especialidades"
-                title="Especialidades e serviços"
-                align="left"
-                uppercaseEyebrow
-              />
-            </Reveal>
-            <Reveal delay={150}>
-              <p className="mt-6">{specialtiesContent.intro}</p>
-            </Reveal>
-            <Reveal delay={300}>
-              <ButtonLink href="/#contato" variant="cyan" className="mt-10">
-                Fale conosco
-              </ButtonLink>
-            </Reveal>
-          </div>
+      <DotGrid className="absolute top-12 -left-4 hidden w-28 text-purple/40 md:block" />
+      <DotGrid className="absolute -right-4 bottom-12 hidden w-28 text-teal/40 md:block" />
 
-          <ul className="grid grid-cols-2 sm:grid-cols-3">
-            {specialties.map(({ id, name, icon: Icon, accent }, index) => (
-              <li
-                key={id}
-                className={cx(
-                  'border-line',
-                  // Divisórias como na referência: verticais entre colunas e horizontal entre linhas.
-                  index % 2 === 1 && 'max-sm:border-l',
-                  index < 4 && 'max-sm:border-b',
-                  index % 3 !== 0 && 'sm:border-l',
-                  index < 3 && 'sm:border-b',
-                )}
-              >
-                <Reveal delay={(index % 3) * 120} className="flex flex-col items-center px-3 py-8 text-center">
+      <Container className="relative">
+        <Reveal className="flex flex-col items-center text-center">
+          <SectionHeading id="especialidades-titulo" title="Especialidades e serviços" />
+          <p className="mt-6 max-w-2xl">{specialtiesContent.intro}</p>
+        </Reveal>
+
+        <ul className="mt-12 grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
+          {specialties.map(({ id, name, icon: Icon, accent }, index) => (
+            <li key={id}>
+              <Reveal delay={(index % 3) * 100} className="h-full">
+                <div
+                  className={cx(
+                    'relative flex h-full items-center gap-4 overflow-hidden rounded-3xl p-5 sm:flex-col sm:items-start sm:gap-6 sm:p-7',
+                    accentClasses[accent].soft,
+                  )}
+                >
+                  {/* Círculo decorativo no canto, na cor da especialidade. */}
+                  <span
+                    aria-hidden="true"
+                    className={cx('absolute -right-8 -bottom-8 size-28 rounded-full opacity-25', accentClasses[accent].solid)}
+                  />
                   <span
                     className={cx(
-                      'flex size-[90px] items-center justify-center rounded-full',
-                      accentClasses[accent].soft,
+                      'relative flex size-14 shrink-0 items-center justify-center rounded-2xl bg-white shadow-soft sm:size-16',
                       accentClasses[accent].text,
                     )}
                   >
-                    <Icon className="size-11" strokeWidth={1.75} aria-hidden="true" />
+                    <Icon className="size-7 sm:size-8" strokeWidth={1.75} aria-hidden="true" />
                   </span>
-                  <h3 className="mt-5 text-lg/[26px] font-bold">{name}</h3>
-                </Reveal>
-              </li>
-            ))}
-          </ul>
-        </div>
+                  <h3 className="relative text-lg sm:text-xl">{name}</h3>
+                </div>
+              </Reveal>
+            </li>
+          ))}
+        </ul>
       </Container>
     </section>
   )

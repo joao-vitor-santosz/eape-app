@@ -1,57 +1,63 @@
-import aboutImage from '../../../assets/images/sala-de-espera-1.jpeg'
-import { TicTacToeDoodle } from '../../../components/decorations/Doodles'
-import { Wave } from '../../../components/decorations/Wave'
-import { ButtonLink } from '../../../components/ui/Button'
+import { Star } from 'lucide-react'
+import logoImage from '../../../assets/images/logo-1.jpeg'
+import { Arcs } from '../../../components/decorations/Arcs'
+import { DotGrid } from '../../../components/decorations/DotGrid'
 import { Container } from '../../../components/ui/Container'
 import { Reveal } from '../../../components/ui/Reveal'
 import { SectionHeading } from '../../../components/ui/SectionHeading'
-import { aboutContent } from '../../../content/home'
+import { aboutContent, audienceContent } from '../../../content/home'
+import { siteInfo } from '../../../content/site'
+import { accentClasses } from '../../../lib/accent'
+import { cx } from '../../../lib/cx'
 
 export function AboutSection() {
   return (
     <section
       id="sobre"
       aria-labelledby="sobre-titulo"
-      className="on-dark relative scroll-mt-24 bg-primary"
+      className="on-dark relative scroll-mt-24 overflow-hidden bg-navy py-16 text-white/85 lg:py-24"
     >
-      <Container className="relative">
-        <div className="grid items-center gap-12 pb-20 lg:grid-cols-2 lg:gap-[30px] lg:pb-28">
-          <Reveal>
-            <img
-              src={aboutImage}
-              alt="Recepção e sala de espera da EAPE, com poltronas e balcão de atendimento"
-              width={899}
-              height={1599}
-              loading="lazy"
-              className="mx-auto aspect-[4/5] w-full max-w-[460px] rounded-3xl object-cover object-[50%_65%]"
-            />
-          </Reveal>
+      <Star className="pointer-events-none absolute top-10 right-[8%] size-5 rotate-12 fill-yellow text-yellow" aria-hidden="true" />
+      <Star className="pointer-events-none absolute bottom-12 left-[45%] hidden size-4 fill-pink text-pink lg:block" aria-hidden="true" />
 
-          <div className="relative">
-            <TicTacToeDoodle className="pointer-events-none absolute top-[42%] right-[18%] w-[90px] -rotate-12 text-white/10" />
-            <Reveal>
-              <SectionHeading
-                id="sobre-titulo"
-                eyebrow="Sobre nós"
-                title="Conheça a EAPE"
-                tone="light"
-                align="left"
-                uppercaseEyebrow
-              />
-            </Reveal>
-            <Reveal delay={150}>
-              <p className="mt-6 max-w-[570px] text-white/85">{aboutContent.text}</p>
-            </Reveal>
-            <Reveal delay={300}>
-              <ButtonLink href="/#contato" variant="cyan" className="mt-10">
-                Fale conosco
-              </ButtonLink>
-            </Reveal>
+      <Container className="relative">
+        <div className="grid items-center gap-14 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] lg:gap-20">
+          <div className="relative mx-auto w-full max-w-64 sm:max-w-80">
+            <DotGrid className="absolute -top-6 -left-8 w-24 text-yellow/70" />
+            <Arcs className="absolute -inset-7 sm:-inset-9" />
+            <img
+              src={logoImage}
+              alt={`Logo da ${siteInfo.shortName} — ${siteInfo.fullName}`}
+              width={640}
+              height={640}
+              loading="lazy"
+              className="relative w-full clip-circle"
+            />
           </div>
+
+          <Reveal>
+            <SectionHeading id="sobre-titulo" title="Conheça a EAPE" tone="light" align="left" />
+            <p className="mt-6 max-w-xl">{aboutContent.text}</p>
+
+            <h3 className="mt-12 text-xl text-white">Quem atendemos</h3>
+            <p className="mt-3 max-w-xl">{audienceContent.intro}</p>
+            <ul className="mt-6 flex flex-wrap gap-3">
+              {audienceContent.items.map(({ label, accent }) => (
+                <li
+                  key={label}
+                  className={cx(
+                    'flex items-center gap-2 rounded-full px-4 py-2 font-heading text-[15px] font-medium text-navy',
+                    accentClasses[accent].soft,
+                  )}
+                >
+                  <Star className={cx('size-4 fill-current', accentClasses[accent].text)} aria-hidden="true" />
+                  {label}
+                </li>
+              ))}
+            </ul>
+          </Reveal>
         </div>
       </Container>
-
-      <Wave variant="sectionBottom" className="h-[50px] text-white lg:h-[90px]" />
     </section>
   )
 }

@@ -11,9 +11,9 @@ export interface Specialty {
 /** As seis especialidades e serviços oficiais da EAPE (nomes definidos pela clínica). */
 export const specialties: Specialty[] = [
   { id: 'fonoaudiologa', name: 'Fonoaudióloga', icon: Speech, accent: 'pink' },
-  { id: 'psicologa', name: 'Psicóloga', icon: Brain, accent: 'cyan' },
-  { id: 'fisioterapia', name: 'Fisioterapia', icon: PersonStanding, accent: 'yellow' },
-  { id: 'psicomotricidade', name: 'Psicomotricidade', icon: Shapes, accent: 'primary' },
-  { id: 'reforco-escolar', name: 'Reforço Escolar', icon: BookOpen, accent: 'pink' },
-  { id: 'psicopedagoga', name: 'Psicopedagoga', icon: Puzzle, accent: 'cyan' },
+  { id: 'psicologa', name: 'Psicóloga', icon: Brain, accent: 'purple' },
+  { id: 'fisioterapia', name: 'Fisioterapia', icon: PersonStanding, accent: 'green' },
+  { id: 'psicomotricidade', name: 'Psicomotricidade', icon: Shapes, accent: 'orange' },
+  { id: 'reforco-escolar', name: 'Reforço Escolar', icon: BookOpen, accent: 'blue' },
+  { id: 'psicopedagoga', name: 'Psicopedagoga', icon: Puzzle, accent: 'teal' },
 ]
