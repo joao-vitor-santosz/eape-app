@@ -1,3 +1,4 @@
+import { CurveDivider } from '../../../components/decorations/CurveDivider'
 import { DotGrid } from '../../../components/decorations/DotGrid'
 import { Container } from '../../../components/ui/Container'
 import { Reveal } from '../../../components/ui/Reveal'
@@ -12,7 +13,7 @@ export function SpecialtiesSection() {
     <section
       id="especialidades"
       aria-labelledby="especialidades-titulo"
-      className="relative scroll-mt-24 overflow-hidden py-16 lg:py-24"
+      className="relative scroll-mt-24 overflow-hidden pt-16 pb-32 sm:pb-36 lg:pt-24 lg:pb-44 xl:pb-48"
     >
       <DotGrid className="absolute top-12 -left-4 hidden w-28 text-purple/40 md:block" />
       <DotGrid className="absolute -right-4 bottom-12 hidden w-28 text-teal/40 md:block" />
@@ -53,6 +54,13 @@ export function SpecialtiesSection() {
           ))}
         </ul>
       </Container>
+
+      <CurveDivider
+        shape="wave"
+        colors={['purple', 'orange', 'teal']}
+        flip
+        className="absolute inset-x-0 -bottom-px text-navy"
+      />
     </section>
   )
 }

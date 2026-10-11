@@ -64,7 +64,7 @@ const orientationClasses = {
 
 export function SpaceSection() {
   return (
-    <section id="espaco" aria-labelledby="espaco-titulo" className="scroll-mt-24 bg-teal-soft py-16 lg:py-24">
+    <section id="espaco" aria-labelledby="espaco-titulo" className="scroll-mt-24 bg-teal-soft pt-12 pb-28 sm:pb-32 lg:pt-16 lg:pb-40 xl:pb-44">
       <Container>
         <Reveal>
           <SectionHeading id="espaco-titulo" title="Nosso espaço" />

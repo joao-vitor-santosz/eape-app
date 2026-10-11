@@ -3,6 +3,7 @@ import logoImage from '../../assets/images/logo-2-sm.jpeg'
 import { mainNav, siteInfo } from '../../content/site'
 import { accentClasses, type AccentColor } from '../../lib/accent'
 import { cx } from '../../lib/cx'
+import { CurveDivider } from '../decorations/CurveDivider'
 import { PencilTips } from '../decorations/PencilTips'
 import { ButtonLink } from '../ui/Button'
 import { Container } from '../ui/Container'
@@ -45,69 +46,79 @@ function FooterTitle({ children, id, barClass }: FooterTitleProps) {
 
 export function Footer() {
   return (
-    <footer className="on-dark bg-navy text-white/85">
-      <Container>
-        <div className="grid gap-12 pt-16 pb-12 md:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1.3fr] lg:gap-16 lg:pt-20">
-          <div>
-            <img
-              src={logoImage}
-              alt={`${siteInfo.shortName} — ${siteInfo.fullName}`}
-              width={160}
-              height={160}
-              loading="lazy"
-              className="size-24 clip-circle"
-            />
-            <p className="mt-5 max-w-xs">{siteInfo.fullName}</p>
-            <ButtonLink href="/#sobre" variant="accent" size="md" className="mt-7">
-              Sobre a EAPE
-            </ButtonLink>
-          </div>
+    <footer className="on-dark text-white/85">
+      {/* A curva sobe sobre o fim da seção anterior, qualquer que seja a página. */}
+      <CurveDivider
+        shape="gentle"
+        colors={['orange', 'purple', 'pink']}
+        flip
+        className="relative -mt-16 -mb-px text-navy sm:-mt-20 lg:-mt-28 xl:-mt-32"
+      />
 
-          <nav aria-labelledby="rodape-navegacao">
-            <FooterTitle id="rodape-navegacao" barClass="bg-orange">
-              Navegação
-            </FooterTitle>
-            <ul className="space-y-3">
-              {mainNav.map((item) => (
-                <li key={item.to}>
-                  <NavItemLink item={item} className={footerLinkClass} />
-                </li>
-              ))}
-            </ul>
-          </nav>
+      <div className="bg-navy">
+        <Container>
+          <div className="grid gap-12 pt-16 pb-12 md:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1.3fr] lg:gap-16 lg:pt-20">
+            <div>
+              <img
+                src={logoImage}
+                alt={`${siteInfo.shortName} — ${siteInfo.fullName}`}
+                width={160}
+                height={160}
+                loading="lazy"
+                className="size-24 clip-circle"
+              />
+              <p className="mt-5 max-w-xs">{siteInfo.fullName}</p>
+              <ButtonLink href="/#sobre" variant="accent" size="md" className="mt-7">
+                Sobre a EAPE
+              </ButtonLink>
+            </div>
 
-          <section id="contato" aria-labelledby="rodape-contato" className="scroll-mt-24 md:col-span-2 lg:col-span-1">
-            <FooterTitle id="rodape-contato" barClass="bg-teal">
-              Contato
-            </FooterTitle>
-            <address className="not-italic">
-              <ul className="space-y-4">
-                {contactItems.map(({ label, value, icon: Icon, accent }) => (
-                  <li key={label} className="flex items-center gap-4">
-                    <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-white/10">
-                      <Icon className={cx('size-5', accentClasses[accent].onDark)} aria-hidden="true" />
-                    </span>
-                    <span>
-                      <span className="block text-sm text-white/70">{label}</span>
-                      <span className="block text-white">{value}</span>
-                    </span>
+            <nav aria-labelledby="rodape-navegacao">
+              <FooterTitle id="rodape-navegacao" barClass="bg-orange">
+                Navegação
+              </FooterTitle>
+              <ul className="space-y-3">
+                {mainNav.map((item) => (
+                  <li key={item.to}>
+                    <NavItemLink item={item} className={footerLinkClass} />
                   </li>
                 ))}
               </ul>
-            </address>
-          </section>
-        </div>
-      </Container>
+            </nav>
 
-      <div className="border-t border-white/10">
-        <Container>
-          <p className="py-6 text-sm text-white/70">
-            © {CURRENT_YEAR} {siteInfo.shortName} — {siteInfo.fullName}. Todos os direitos reservados.
-          </p>
+            <section id="contato" aria-labelledby="rodape-contato" className="scroll-mt-24 md:col-span-2 lg:col-span-1">
+              <FooterTitle id="rodape-contato" barClass="bg-teal">
+                Contato
+              </FooterTitle>
+              <address className="not-italic">
+                <ul className="space-y-4">
+                  {contactItems.map(({ label, value, icon: Icon, accent }) => (
+                    <li key={label} className="flex items-center gap-4">
+                      <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-white/10">
+                        <Icon className={cx('size-5', accentClasses[accent].onDark)} aria-hidden="true" />
+                      </span>
+                      <span>
+                        <span className="block text-sm text-white/70">{label}</span>
+                        <span className="block text-white">{value}</span>
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </address>
+            </section>
+          </div>
         </Container>
-      </div>
 
-      <PencilTips />
+        <div className="border-t border-white/10">
+          <Container>
+            <p className="py-6 text-sm text-white/70">
+              © {CURRENT_YEAR} {siteInfo.shortName} — {siteInfo.fullName}. Todos os direitos reservados.
+            </p>
+          </Container>
+        </div>
+
+        <PencilTips />
+      </div>
     </footer>
   )
 }

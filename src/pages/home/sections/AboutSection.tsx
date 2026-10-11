@@ -1,6 +1,7 @@
 import { Star } from 'lucide-react'
 import logoImage from '../../../assets/images/logo-1.jpeg'
 import { Arcs } from '../../../components/decorations/Arcs'
+import { CurveDivider } from '../../../components/decorations/CurveDivider'
 import { DotGrid } from '../../../components/decorations/DotGrid'
 import { Container } from '../../../components/ui/Container'
 import { Reveal } from '../../../components/ui/Reveal'
@@ -15,7 +16,7 @@ export function AboutSection() {
     <section
       id="sobre"
       aria-labelledby="sobre-titulo"
-      className="on-dark relative scroll-mt-24 overflow-hidden bg-navy py-16 text-white/85 lg:py-24"
+      className="on-dark relative scroll-mt-24 overflow-hidden bg-navy pt-12 pb-32 text-white/85 sm:pb-36 lg:pt-16 lg:pb-44 xl:pb-48"
     >
       <Star className="pointer-events-none absolute top-10 right-[8%] size-5 rotate-12 fill-yellow text-yellow" aria-hidden="true" />
       <Star className="pointer-events-none absolute bottom-12 left-[45%] hidden size-4 fill-pink text-pink lg:block" aria-hidden="true" />
@@ -58,6 +59,12 @@ export function AboutSection() {
           </Reveal>
         </div>
       </Container>
+
+      <CurveDivider
+        shape="hill"
+        colors={['yellow', 'pink', 'green']}
+        className="absolute inset-x-0 -bottom-px text-teal-soft"
+      />
     </section>
   )
 }

@@ -1,8 +1,8 @@
 import { Star } from 'lucide-react'
 import heroImage from '../../../assets/images/consultorio-2.jpeg'
 import { Arcs } from '../../../components/decorations/Arcs'
+import { CurveDivider } from '../../../components/decorations/CurveDivider'
 import { DotGrid } from '../../../components/decorations/DotGrid'
-import { PencilTips } from '../../../components/decorations/PencilTips'
 import { ButtonLink } from '../../../components/ui/Button'
 import { Container } from '../../../components/ui/Container'
 import { heroContent } from '../../../content/home'
@@ -31,7 +31,7 @@ export function HeroSection() {
       <Star className="pointer-events-none absolute top-24 right-[3%] size-4 fill-teal text-teal" aria-hidden="true" />
 
       <Container>
-        <div className="grid items-center gap-16 pt-12 pb-16 lg:grid-cols-[1fr_1.05fr] lg:gap-16 lg:pt-20 lg:pb-24">
+        <div className="grid items-center gap-16 pt-12 pb-28 sm:pb-32 lg:grid-cols-[1fr_1.05fr] lg:gap-16 lg:pt-20 lg:pb-40 xl:pb-44">
           <div>
             <p className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-1.5 font-heading text-sm font-medium text-navy shadow-soft">
               <Star className="size-4 fill-orange text-orange" aria-hidden="true" />
@@ -76,7 +76,7 @@ export function HeroSection() {
         </div>
       </Container>
 
-      <PencilTips />
+      <CurveDivider shape="gentle" colors={['teal', 'orange', 'pink']} className="absolute inset-x-0 -bottom-px text-white" />
     </section>
   )
 }
