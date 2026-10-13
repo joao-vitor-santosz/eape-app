@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router'
+import { Outlet, ScrollRestoration } from 'react-router'
 import { Footer } from '../components/layout/Footer'
 import { Header } from '../components/layout/Header'
 import { ScrollTopButton } from '../components/layout/ScrollTopButton'
@@ -23,6 +23,9 @@ export function SiteLayout() {
       </main>
       <Footer />
       <ScrollTopButton />
+      {/* Ao trocar de página, volta ao topo (ou à âncora do link). */}
+      {/* A chave pelo caminho evita herdar a rolagem de outra página aberta direto pelo endereço. */}
+      <ScrollRestoration getKey={(location) => location.pathname} />
     </>
   )
 }

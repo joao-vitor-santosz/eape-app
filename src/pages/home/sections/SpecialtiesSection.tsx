@@ -1,10 +1,12 @@
+import { ArrowRight } from 'lucide-react'
+import { Link } from 'react-router'
 import { CurveDivider } from '../../../components/decorations/CurveDivider'
 import { DotGrid } from '../../../components/decorations/DotGrid'
 import { Container } from '../../../components/ui/Container'
 import { Reveal } from '../../../components/ui/Reveal'
 import { SectionHeading } from '../../../components/ui/SectionHeading'
 import { specialtiesContent } from '../../../content/home'
-import { specialties } from '../../../content/specialties'
+import { specialties, specialtyPath } from '../../../content/specialties'
 import { accentClasses } from '../../../lib/accent'
 import { cx } from '../../../lib/cx'
 
@@ -32,9 +34,12 @@ export function SpecialtiesSection() {
               className={cx(index === specialties.length - 1 && specialties.length % 3 === 1 && 'lg:col-start-2')}
             >
               <Reveal delay={(index % 3) * 100} className="h-full">
-                <div
+                <Link
+                  to={specialtyPath(id)}
                   className={cx(
-                    'relative flex h-full items-center gap-4 overflow-hidden rounded-3xl p-5 sm:flex-col sm:items-start sm:gap-6 sm:p-7',
+                    'group relative flex h-full items-center gap-4 overflow-hidden rounded-3xl p-5 sm:flex-col sm:items-start sm:gap-6 sm:p-7',
+                    // Hover só em dispositivos com mouse (padrão do Tailwind 4); leve redução ao tocar/clicar.
+                    'transition-[translate,box-shadow,scale] duration-200 ease-out-strong hover:-translate-y-1 hover:shadow-soft active:scale-98 motion-reduce:transition-none',
                     accentClasses[accent].soft,
                   )}
                 >
@@ -52,7 +57,14 @@ export function SpecialtiesSection() {
                     <Icon className="size-7 sm:size-8" strokeWidth={1.75} aria-hidden="true" />
                   </span>
                   <h3 className="relative text-lg sm:text-xl">{name}</h3>
-                </div>
+                  <span className="relative ml-auto flex items-center gap-1.5 font-heading text-sm font-medium text-navy sm:ml-0 sm:mt-auto">
+                    <span className="max-sm:sr-only">Conhecer a equipe</span>
+                    <ArrowRight
+                      className="size-4 transition-transform duration-200 ease-out-strong group-hover:translate-x-1 motion-reduce:transition-none"
+                      aria-hidden="true"
+                    />
+                  </span>
+                </Link>
               </Reveal>
             </li>
           ))}

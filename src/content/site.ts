@@ -4,6 +4,11 @@
  * Valores entre colchetes são MARCADORES TEMPORÁRIOS: ainda não foram
  * confirmados pela EAPE e devem ser substituídos antes da publicação.
  */
+import { buildWhatsAppLink } from '../lib/whatsapp'
+
+/** Número do WhatsApp da EAPE no formato internacional (usado nos links wa.me). */
+export const WHATSAPP_NUMBER = '5569993843528'
+
 export const siteInfo = {
   shortName: 'EAPE',
   fullName: 'Espaço de Atendimento Pedagógico Especializado',
@@ -11,9 +16,10 @@ export const siteInfo = {
     phone: { label: '(69) 99384-3528', href: 'tel:+5569993843528' },
     whatsapp: {
       label: '(69) 99384-3528',
-      href: `https://wa.me/5569993843528?text=${encodeURIComponent(
+      href: buildWhatsAppLink(
+        WHATSAPP_NUMBER,
         'Olá! Encontrei o contato da EAPE pelo site e gostaria de mais informações.',
-      )}`,
+      ),
     },
     instagram: { label: '@eapepedagogico', href: 'https://www.instagram.com/eapepedagogico/' },
     email: '[E-mail a confirmar]',
@@ -29,7 +35,7 @@ export const siteInfo = {
 
 export interface NavItem {
   label: string
-  /** Rotas ("/") ou âncoras da página inicial ("/#secao"). */
+  /** Rotas ("/"), âncoras da página inicial ("/#secao") ou da página atual ("#secao"). */
   to: string
 }
 
@@ -42,7 +48,8 @@ export const mainNav: NavItem[] = [
   { label: 'Sobre', to: '/#sobre' },
   { label: 'Especialidades', to: '/#especialidades' },
   { label: 'Nosso espaço', to: '/#espaco' },
-  { label: 'Contato', to: '/#contato' },
+  // O contato fica no rodapé, presente em todas as páginas.
+  { label: 'Contato', to: '#contato' },
 ]
 
 export function isAnchorLink(to: string): boolean {

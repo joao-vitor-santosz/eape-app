@@ -1,6 +1,6 @@
 import { Menu, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
-import { mainNav } from '../../content/site'
+import { mainNav, siteInfo } from '../../content/site'
 import { useScrolledPast } from '../../hooks/useScrolledPast'
 import { cx } from '../../lib/cx'
 import { ButtonLink } from '../ui/Button'
@@ -68,8 +68,9 @@ export function Header() {
           </nav>
 
           <div className="hidden lg:block">
-            <ButtonLink href="/#contato" variant="accent" size="md">
+            <ButtonLink href={siteInfo.contact.whatsapp.href} target="_blank" rel="noopener noreferrer" variant="accent" size="md">
               Fale conosco
+              <span className="sr-only"> pelo WhatsApp (abre em nova aba)</span>
             </ButtonLink>
           </div>
 
@@ -104,8 +105,17 @@ export function Header() {
                   </li>
                 ))}
               </ul>
-              <ButtonLink href="/#contato" variant="accent" size="md" className="mt-4 w-full" onClick={closeMenu}>
+              <ButtonLink
+                href={siteInfo.contact.whatsapp.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="accent"
+                size="md"
+                className="mt-4 w-full"
+                onClick={closeMenu}
+              >
                 Fale conosco
+                <span className="sr-only"> pelo WhatsApp (abre em nova aba)</span>
               </ButtonLink>
             </Container>
           </nav>
