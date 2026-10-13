@@ -12,8 +12,15 @@ export const heroContent = {
   intro: tagline,
 }
 
+/**
+ * Texto provisório de apresentação, sem dados factuais (história, números, credenciais).
+ * Substituir ou validar com a EAPE antes da publicação.
+ */
 export const aboutContent = {
-  text: '[Texto institucional sobre a EAPE — história, proposta e forma de atendimento — a confirmar]',
+  paragraphs: [
+    'A EAPE é um espaço dedicado ao desenvolvimento e à aprendizagem de crianças e adolescentes. Aqui, cada pessoa é recebida com escuta atenta, respeito ao seu ritmo e cuidado com a sua história.',
+    'Reunimos diferentes especialidades em um só lugar para olhar cada criança e adolescente de forma integral, caminhando lado a lado com as famílias em cada etapa do atendimento.',
+  ],
 }
 
 export interface AudienceItem {
@@ -35,6 +42,8 @@ export const audienceContent: { intro: string; items: AudienceItem[] } = {
   ],
 }
 
+/** Texto provisório de introdução da equipe. Validar com a EAPE antes da publicação. */
 export const specialtiesContent = {
-  intro: '[Texto introdutório sobre as especialidades e serviços — a confirmar]',
+  intro:
+    'Nossa equipe reúne profissionais de diferentes áreas que atuam de forma integrada, unindo saúde, desenvolvimento e aprendizagem para oferecer um cuidado completo e acolhedor.',
 }

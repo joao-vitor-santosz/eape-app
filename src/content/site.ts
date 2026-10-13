@@ -8,9 +8,21 @@ export const siteInfo = {
   shortName: 'EAPE',
   fullName: 'Espaço de Atendimento Pedagógico Especializado',
   contact: {
-    phone: '[Telefone a confirmar]',
+    phone: { label: '(69) 99384-3528', href: 'tel:+5569993843528' },
+    whatsapp: {
+      label: '(69) 99384-3528',
+      href: `https://wa.me/5569993843528?text=${encodeURIComponent(
+        'Olá! Encontrei o contato da EAPE pelo site e gostaria de mais informações.',
+      )}`,
+    },
+    instagram: { label: '@eapepedagogico', href: 'https://www.instagram.com/eapepedagogico/' },
     email: '[E-mail a confirmar]',
-    address: '[Endereço a confirmar]',
+    address: {
+      label: 'R. Heitor Vila Lobos, 5448 - Flodoaldo Pontes Pinto, Porto Velho - RO',
+      href: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+        'R. Heitor Vila Lobos, 5448, Flodoaldo Pontes Pinto, Porto Velho - RO',
+      )}`,
+    },
     openingHours: '[Horário de atendimento a confirmar]',
   },
 } as const

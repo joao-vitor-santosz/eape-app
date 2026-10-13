@@ -20,13 +20,17 @@ export function SpecialtiesSection() {
 
       <Container className="relative">
         <Reveal className="flex flex-col items-center text-center">
-          <SectionHeading id="especialidades-titulo" title="Especialidades e serviços" />
+          <SectionHeading id="especialidades-titulo" title="Equipe Multidisciplinar" />
           <p className="mt-6 max-w-2xl">{specialtiesContent.intro}</p>
         </Reveal>
 
         <ul className="mt-12 grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
           {specialties.map(({ id, name, icon: Icon, accent }, index) => (
-            <li key={id}>
+            <li
+              key={id}
+              // Com 3 colunas, um último cartão sozinho na linha fica centralizado.
+              className={cx(index === specialties.length - 1 && specialties.length % 3 === 1 && 'lg:col-start-2')}
+            >
               <Reveal delay={(index % 3) * 100} className="h-full">
                 <div
                   className={cx(

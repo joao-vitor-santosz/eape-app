@@ -1,4 +1,16 @@
-import { Brain, BookOpen, PersonStanding, Puzzle, Shapes, Speech, type LucideIcon } from 'lucide-react'
+import {
+  Blocks,
+  BookOpen,
+  Brain,
+  BrainCircuit,
+  GraduationCap,
+  HandHeart,
+  PersonStanding,
+  Puzzle,
+  Speech,
+  WavesLadder,
+  type LucideIcon,
+} from 'lucide-react'
 import type { AccentColor } from '../lib/accent'
 
 export interface Specialty {
@@ -8,12 +20,16 @@ export interface Specialty {
   accent: AccentColor
 }
 
-/** As seis especialidades e serviços oficiais da EAPE (nomes definidos pela clínica). */
+/** Especialidades e serviços da equipe multidisciplinar da EAPE (nomes definidos pela clínica). */
 export const specialties: Specialty[] = [
   { id: 'fonoaudiologa', name: 'Fonoaudióloga', icon: Speech, accent: 'pink' },
   { id: 'psicologa', name: 'Psicóloga', icon: Brain, accent: 'purple' },
   { id: 'fisioterapia', name: 'Fisioterapia', icon: PersonStanding, accent: 'green' },
-  { id: 'psicomotricidade', name: 'Psicomotricidade', icon: Shapes, accent: 'orange' },
-  { id: 'reforco-escolar', name: 'Reforço Escolar', icon: BookOpen, accent: 'blue' },
+  { id: 'terapeuta-ocupacional', name: 'Terapeuta Ocupacional', icon: HandHeart, accent: 'orange' },
   { id: 'psicopedagoga', name: 'Psicopedagoga', icon: Puzzle, accent: 'teal' },
+  { id: 'neuropsicopedagoga', name: 'Neuropsicopedagoga', icon: BrainCircuit, accent: 'yellow' },
+  { id: 'pedagoga', name: 'Pedagoga', icon: GraduationCap, accent: 'blue' },
+  { id: 'reforco-escolar', name: 'Reforço Escolar', icon: BookOpen, accent: 'pink' },
+  { id: 'aba', name: 'ABA', icon: Blocks, accent: 'purple' },
+  { id: 'hidroterapia', name: 'Hidroterapia', icon: WavesLadder, accent: 'teal' },
 ]

@@ -276,14 +276,18 @@ Não deixe imagens quebradas, caminhos inválidos ou elementos de demonstração
 
 Utilize apenas informações fornecidas ou aprovadas pelo responsável pelo projeto.
 
-As especialidades oficiais informadas para a EAPE são:
+As especialidades oficiais informadas para a EAPE (equipe multidisciplinar) são:
 
 1. Fonoaudióloga.
 2. Psicóloga.
 3. Fisioterapia.
-4. Psicomotricidade.
-5. Reforço Escolar.
-6. Psicopedagoga.
+4. Terapeuta Ocupacional.
+5. Psicopedagoga.
+6. Neuropsicopedagoga.
+7. Pedagoga.
+8. Reforço Escolar.
+9. ABA.
+10. Hidroterapia.
 
 Preserve a nomenclatura acima, salvo solicitação explícita de alteração.
 

@@ -1,4 +1,4 @@
-import { Clock, Mail, MapPin, Phone, type LucideIcon } from 'lucide-react'
+import { AtSign, Clock, Mail, MapPin, MessageCircle, Phone, type LucideIcon } from 'lucide-react'
 import logoImage from '../../assets/images/logo-2-sm.jpeg'
 import { mainNav, siteInfo } from '../../content/site'
 import { accentClasses, type AccentColor } from '../../lib/accent'
@@ -12,14 +12,40 @@ import { NavItemLink } from './NavItemLink'
 interface ContactItem {
   label: string
   value: string
+  href?: string
+  /** Abre em nova aba (links para outros sites). */
+  external?: boolean
   icon: LucideIcon
   accent: AccentColor
 }
 
 const contactItems: ContactItem[] = [
-  { label: 'Telefone', value: siteInfo.contact.phone, icon: Phone, accent: 'pink' },
+  { label: 'Telefone', value: siteInfo.contact.phone.label, href: siteInfo.contact.phone.href, icon: Phone, accent: 'pink' },
+  {
+    label: 'WhatsApp',
+    value: siteInfo.contact.whatsapp.label,
+    href: siteInfo.contact.whatsapp.href,
+    external: true,
+    icon: MessageCircle,
+    accent: 'green',
+  },
+  {
+    label: 'Instagram',
+    value: siteInfo.contact.instagram.label,
+    href: siteInfo.contact.instagram.href,
+    external: true,
+    icon: AtSign,
+    accent: 'orange',
+  },
   { label: 'E-mail', value: siteInfo.contact.email, icon: Mail, accent: 'yellow' },
-  { label: 'Endereço', value: siteInfo.contact.address, icon: MapPin, accent: 'green' },
+  {
+    label: 'Endereço',
+    value: siteInfo.contact.address.label,
+    href: siteInfo.contact.address.href,
+    external: true,
+    icon: MapPin,
+    accent: 'blue',
+  },
   { label: 'Horário de atendimento', value: siteInfo.contact.openingHours, icon: Clock, accent: 'teal' },
 ]
 
@@ -92,14 +118,25 @@ export function Footer() {
               </FooterTitle>
               <address className="not-italic">
                 <ul className="space-y-4">
-                  {contactItems.map(({ label, value, icon: Icon, accent }) => (
+                  {contactItems.map(({ label, value, href, external, icon: Icon, accent }) => (
                     <li key={label} className="flex items-center gap-4">
                       <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-white/10">
                         <Icon className={cx('size-5', accentClasses[accent].onDark)} aria-hidden="true" />
                       </span>
                       <span>
                         <span className="block text-sm text-white/70">{label}</span>
-                        <span className="block text-white">{value}</span>
+                        {href ? (
+                          <a
+                            href={href}
+                            {...(external && { target: '_blank', rel: 'noopener noreferrer' })}
+                            className="block rounded-sm text-white underline-offset-4 hover:underline"
+                          >
+                            {value}
+                            {external && <span className="sr-only"> (abre em nova aba)</span>}
+                          </a>
+                        ) : (
+                          <span className="block text-white">{value}</span>
+                        )}
                       </span>
                     </li>
                   ))}
