@@ -1,8 +1,8 @@
-import { ChevronRight, MessageCircle, Star } from 'lucide-react'
-import { Link } from 'react-router'
+import { MessageCircle, Star } from 'lucide-react'
 import { Arcs } from '../../../components/decorations/Arcs'
 import { CurveDivider } from '../../../components/decorations/CurveDivider'
 import { DotGrid } from '../../../components/decorations/DotGrid'
+import { Breadcrumb } from '../../../components/ui/Breadcrumb'
 import { ButtonLink } from '../../../components/ui/Button'
 import { Container } from '../../../components/ui/Container'
 import { WHATSAPP_NUMBER } from '../../../content/site'
@@ -10,8 +10,6 @@ import type { Specialty } from '../../../content/specialties'
 import { accentClasses } from '../../../lib/accent'
 import { cx } from '../../../lib/cx'
 import { buildWhatsAppLink } from '../../../lib/whatsapp'
-
-const breadcrumbLinkClass = 'rounded-sm underline-offset-4 hover:text-navy hover:underline'
 
 export function SpecialtyHero({ specialty }: { specialty: Specialty }) {
   const { name, icon: Icon, accent, description } = specialty
@@ -23,29 +21,10 @@ export function SpecialtyHero({ specialty }: { specialty: Specialty }) {
       <DotGrid className="absolute bottom-24 left-[3%] hidden w-24 text-navy/15 md:block" />
 
       <Container className="relative">
-        <nav aria-label="Você está aqui" className="pt-8 text-sm text-ink">
-          <ol className="flex flex-wrap items-center gap-1.5">
-            <li>
-              <Link to="/" className={breadcrumbLinkClass}>
-                Início
-              </Link>
-            </li>
-            <li aria-hidden="true">
-              <ChevronRight className="size-4" />
-            </li>
-            <li>
-              <Link to="/#especialidades" className={breadcrumbLinkClass}>
-                Equipe Multidisciplinar
-              </Link>
-            </li>
-            <li aria-hidden="true">
-              <ChevronRight className="size-4" />
-            </li>
-            <li aria-current="page" className="font-medium text-navy">
-              {name}
-            </li>
-          </ol>
-        </nav>
+        <Breadcrumb
+          className="pt-8"
+          items={[{ label: 'Início', to: '/' }, { label: 'Equipe Multidisciplinar', to: '/#especialidades' }, { label: name }]}
+        />
 
         <div className="grid items-center gap-12 pt-10 pb-28 sm:pb-32 lg:grid-cols-[1fr_auto] lg:gap-20 lg:pt-14 lg:pb-40 xl:pb-44">
           <div>

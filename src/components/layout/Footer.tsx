@@ -94,7 +94,7 @@ export function Footer() {
                 className="size-24 clip-circle"
               />
               <p className="mt-5 max-w-xs">{siteInfo.fullName}</p>
-              <ButtonLink href="/#sobre" variant="accent" size="md" className="mt-7">
+              <ButtonLink href="/sobre" variant="accent" size="md" className="mt-7">
                 Sobre a EAPE
               </ButtonLink>
             </div>

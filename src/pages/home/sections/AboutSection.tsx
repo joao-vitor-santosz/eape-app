@@ -1,15 +1,15 @@
-import { Star } from 'lucide-react'
+import { ArrowRight, Star } from 'lucide-react'
 import logoImage from '../../../assets/images/logo-1.jpeg'
 import { Arcs } from '../../../components/decorations/Arcs'
 import { CurveDivider } from '../../../components/decorations/CurveDivider'
 import { DotGrid } from '../../../components/decorations/DotGrid'
+import { AudienceChips } from '../../../components/ui/AudienceChips'
+import { ButtonLink } from '../../../components/ui/Button'
 import { Container } from '../../../components/ui/Container'
 import { Reveal } from '../../../components/ui/Reveal'
 import { SectionHeading } from '../../../components/ui/SectionHeading'
 import { aboutContent, audienceContent } from '../../../content/home'
 import { siteInfo } from '../../../content/site'
-import { accentClasses } from '../../../lib/accent'
-import { cx } from '../../../lib/cx'
 
 export function AboutSection() {
   return (
@@ -46,20 +46,12 @@ export function AboutSection() {
 
             <h3 className="mt-12 text-xl text-white">Quem atendemos</h3>
             <p className="mt-3 max-w-xl">{audienceContent.intro}</p>
-            <ul className="mt-6 flex flex-wrap gap-3">
-              {audienceContent.items.map(({ label, accent }) => (
-                <li
-                  key={label}
-                  className={cx(
-                    'flex items-center gap-2 rounded-full px-4 py-2 font-heading text-[15px] font-medium text-navy',
-                    accentClasses[accent].soft,
-                  )}
-                >
-                  <Star className={cx('size-4 fill-current', accentClasses[accent].text)} aria-hidden="true" />
-                  {label}
-                </li>
-              ))}
-            </ul>
+            <AudienceChips className="mt-6" />
+
+            <ButtonLink href="/sobre" variant="accent" className="mt-10">
+              Conheça nossa história
+              <ArrowRight className="size-5" aria-hidden="true" />
+            </ButtonLink>
           </Reveal>
         </div>
       </Container>

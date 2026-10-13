@@ -45,7 +45,7 @@ export interface NavItem {
  */
 export const mainNav: NavItem[] = [
   { label: 'Início', to: '/' },
-  { label: 'Sobre', to: '/#sobre' },
+  { label: 'Sobre', to: '/sobre' },
   { label: 'Especialidades', to: '/#especialidades' },
   { label: 'Nosso espaço', to: '/#espaco' },
   // O contato fica no rodapé, presente em todas as páginas.

@@ -57,3 +57,31 @@ Se, além disso, cada profissional deve ter **uma página só dele** (ex.: `/pro
 - **E-mail** de contato.
 - **Horário de atendimento.**
 - **Textos provisórios** da Home ("Equipe Multidisciplinar" e "Conheça a EAPE") — validar ou substituir.
+
+---
+
+## 5. Página "Sobre" — questionário para a cliente
+
+A página `/sobre` já está montada. Os trechos que dependem da clínica aparecem no site com o aviso **"Aguardando conteúdo da EAPE"** e precisam ser substituídos antes da publicação. As respostas abaixo preenchem esses espaços.
+
+**Nossa história** (seção "Nossa história")
+1. Como e quando a EAPE começou?
+2. Quem fundou a clínica e por quê?
+3. Algum marco importante da trajetória que vocês gostariam de contar?
+
+**Como funciona o atendimento** (seção em etapas — hoje só a etapa 1, "Primeiro contato", está preenchida)
+4. Qual é o passo a passo desde o primeiro contato até o acompanhamento? Quantas etapas existem? (ex.: acolhimento, avaliação, plano individual, acompanhamento com família e escola)
+5. Como a família participa do processo? Há contato com a escola?
+
+**Nossos valores**
+6. Quais 3 ou 4 valores ou princípios definem a EAPE? Uma frase curta para cada.
+
+**Perguntas frequentes** (já existem as perguntas; faltam as respostas marcadas)
+7. A partir de qual idade vocês atendem? Atendem até qual idade?
+8. É preciso encaminhamento médico ou de outro profissional para iniciar?
+9. Vocês atendem por convênio? Quais? Ou somente particular?
+10. Qual é o horário de atendimento? (também aparece no rodapé)
+11. Existem outras perguntas que as famílias fazem com frequência? Quais as respostas?
+
+**Fotos**
+12. Há mais fotos do espaço (salas, área externa, fachada) para uma galeria mais completa?
